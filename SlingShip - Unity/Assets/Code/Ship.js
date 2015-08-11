@@ -20,7 +20,6 @@
  private var rigid : Rigidbody; 
  
  function updateThrust(){
- Debug.Log(thrust); 
  anim.speed =  thrust; 
 	 if(thrust > 0){
 	 	smallParticle.startLifetime = thrust * maxLifeSM ; 
@@ -126,7 +125,6 @@
  }
  
  function Update() {
- 
  	getInput(); 
 	updateThrust(); 
 	useFuel(); 

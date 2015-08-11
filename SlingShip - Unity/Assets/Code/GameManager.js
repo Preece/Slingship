@@ -98,6 +98,8 @@ function CalculateCameraPosition(boundingBox : Rect) {
 }
 
 function CalculateOrthographicSize(boundingBox : Rect) {
+return gameCamera.orthographicSize * (1+ Input.GetAxis("Mouse ScrollWheel") * -1); 
+/*
     var orthographicSize = gameCamera.orthographicSize;
     var topRight = new Vector3(boundingBox.x + boundingBox.width, boundingBox.y, 0f);
     var topRightAsViewport = gameCamera.WorldToViewportPoint(topRight);
@@ -108,4 +110,5 @@ function CalculateOrthographicSize(boundingBox : Rect) {
         orthographicSize = Mathf.Abs(boundingBox.height) / 2f;
 
     return Mathf.Clamp(Mathf.Lerp(gameCamera.orthographicSize, orthographicSize, Time.deltaTime * zoomSpeed), minimumOrthographicSize, Mathf.Infinity);
+    */
 }
