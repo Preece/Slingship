@@ -39,14 +39,10 @@
              
              Debug.Log(thrustVec);
              
-             gameObject.GetComponent(Rigidbody).drag = 0;
-             
              if(Input.GetKey("space")) {
              	if(Input.GetKey ("up")) {
              		gameObject.GetComponent(Rigidbody).AddForce(thrustVec);
-             	} else if(Input.GetKey ("down")) {
-             		gameObject.GetComponent(Rigidbody).drag = 2 * thrust;
-             	}
+             	} 
              }
              
          }
@@ -55,11 +51,14 @@
  
  function Update() {
  
+ 	gameObject.GetComponent(Rigidbody).drag = 0;
+ 	
  	if(Input.GetKey("space")) {
 	 	if (Input.GetKey ("up")) {
 	 		thrust += 0.8 * Time.deltaTime;
 	 	} else if (Input.GetKey ("down")) {
 			thrust += 0.8 * Time.deltaTime;
+			gameObject.GetComponent(Rigidbody).drag = 2 * thrust;
 		}
 	}
 	
