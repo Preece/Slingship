@@ -7,6 +7,7 @@
  var maxFuel : float = 100;
  var currentFuel : float = -1; 
  var fuelUsage: float = 2; 
+ static var t : Ship; 
  
  var bigParticle : ParticleSystem ;
  var smallParticle : ParticleSystem ; 
@@ -74,6 +75,7 @@
  }
  
  function Start () {
+ t = this; 
  	rigid = GetComponent(Rigidbody); 
      planets = GameObject.FindGameObjectsWithTag("Planet");
      maxSpeedSM = smallParticle.startSpeed;

@@ -7,6 +7,7 @@ var minimumOrthographicSize : float = 8.0;
 var zoomSpeed : float = 0.1;
 var panSpeed : float = 1;
 
+static var t : GameManager; 
 var gameCamera : Camera;
 
 var ship : GameObject;
@@ -19,7 +20,7 @@ function Awake() {
 
 function Start () {
 	targets = new Array();
-	
+	t = this; 
 	planets = GameObject.FindGameObjectsWithTag("Planet");
 	targets.AddRange(planets);
 	
@@ -64,6 +65,9 @@ function Update () {
 	
 	targets.Add(ship);
 	
+	if(Input.GetKeyDown(KeyCode.P)){
+		ExplodeAndRestart(); 
+	}
 
 }
 
@@ -72,6 +76,15 @@ function LateUpdate() {
     gameCamera.transform.position = CalculateCameraPosition(boundingBox);
     gameCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
 }
+function ExplodeAndRestart(){
+	Instantiate(UIManager.t.explosionPrefab, Ship.t.transform.position, Quaternion.identity);
+	Destroy(Ship.t.gameObject);
+	Invoke("Restart",2); 
+}
+function Restart(){
+	Application.LoadLevel(Application.loadedLevel); 
+}
+
 
 function CalculateTargetsBoundingBox() {
     var minX = Mathf.Infinity;
