@@ -62,8 +62,6 @@ function Update () {
 	targets.Add(closestPlanet2);
 	
 	targets.Add(ship);
-	
-	Debug.Log(targets.length);
 
 }
 

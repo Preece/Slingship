@@ -14,7 +14,6 @@
  private var maxLifeSM: float; 
  
  function updateThrust(){
- Debug.Log(thrust); 
  anim.speed =  thrust; 
 	 if(thrust > 0){
 	 	smallParticle.startLifetime = thrust * maxLifeSM ; 
@@ -101,3 +100,4 @@
 	if(thrust > 1) thrust = 1;
 	updateThrust(); 
  }
+ 

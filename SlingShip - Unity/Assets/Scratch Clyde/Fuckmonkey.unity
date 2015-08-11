@@ -154,7 +154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .707106829
+      value: .707106888
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: m_LocalRotation.y
@@ -166,7 +166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106709
+      value: .707106769
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: m_RootOrder
@@ -238,6 +238,10 @@ Prefab:
       propertyPath: thrust
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5494850, guid: 61720e0d3b08a884698697f771daaec4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61720e0d3b08a884698697f771daaec4, type: 2}
   m_IsPrefabParent: 0
@@ -262,7 +266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 3aa89d112b1f239499c4bc10027e9eaa, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .707106829
+      value: .707106888
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 3aa89d112b1f239499c4bc10027e9eaa, type: 2}
       propertyPath: m_LocalRotation.y
@@ -274,7 +278,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 3aa89d112b1f239499c4bc10027e9eaa, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106709
+      value: .707106769
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: 3aa89d112b1f239499c4bc10027e9eaa, type: 2}
       propertyPath: m_RootOrder
@@ -308,7 +312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: a5e461b0dd89f4c48a07d1d36927e2c0, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .707106829
+      value: .707106888
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: a5e461b0dd89f4c48a07d1d36927e2c0, type: 2}
       propertyPath: m_LocalRotation.y
@@ -320,7 +324,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: a5e461b0dd89f4c48a07d1d36927e2c0, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106709
+      value: .707106769
       objectReference: {fileID: 0}
     - target: {fileID: 444180, guid: a5e461b0dd89f4c48a07d1d36927e2c0, type: 2}
       propertyPath: m_RootOrder
