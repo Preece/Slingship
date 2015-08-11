@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Black
-  m_Shader: {fileID: 4800000, guid: 8e623dcf33610ba4e8e667a51b23d810, type: 3}
-  m_ShaderKeywords: 
+  m_Name: StarField_1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -18,9 +18,9 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 70fce66f68279cc49866bdf22c241bff, type: 3}
+          m_Texture: {fileID: 2800000, guid: 53378700fd996a1449ac7e59695c8c72, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 1.07000005, y: -.25}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
@@ -77,20 +77,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _PathMask
-        second:
-          m_Texture: {fileID: 2800000, guid: 2a8e04041dae74547abd1b6f7342d0d1, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: -5.17999983, y: 0}
-      data:
-        first:
-          name: _PathTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 42468d01abee45849a93d72710aba966, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: -1.82000005, y: 0}
     m_Floats:
       data:
         first:
@@ -98,16 +84,12 @@ Material:
         second: .5
       data:
         first:
-          name: _Shininess
-        second: .078125
-      data:
-        first:
           name: _SrcBlend
         second: 1
       data:
         first:
           name: _DstBlend
-        second: 0
+        second: 10
       data:
         first:
           name: _Parallax
@@ -115,7 +97,7 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 1
+        second: 0
       data:
         first:
           name: _Glossiness
@@ -143,15 +125,11 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 3
       data:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _RimPower
-        second: 3
     m_Colors:
       data:
         first:
@@ -163,13 +141,5 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
-      data:
-        first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _RimColor
-        second: {r: .25999999, g: .189999998, b: .159999996, a: 0}

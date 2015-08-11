@@ -28,7 +28,6 @@
              
              gameObject.GetComponent(Rigidbody).AddForce(force);
              
-             Debug.Log(gameObject.GetComponent(Rigidbody).velocity.magnitude);
              
              gameObject.GetComponent(Rigidbody).velocity = Vector3.ClampMagnitude(gameObject.GetComponent(Rigidbody).velocity, 10);
              
