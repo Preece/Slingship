@@ -20,20 +20,29 @@
  private var maxLifeSM: float; 
  private var hasFuel: boolean = true; 
  private var rigid : Rigidbody; 
+ private var thrustSound : AudioSource;
  
  function updateThrust(){
  anim.speed =  thrust; 
 	 if(thrust > 0){
+	 thrustSound.volume = thrust; 
 	 	smallParticle.startLifetime = thrust * maxLifeSM ; 
 	 	//smallParticle.startSpeed = maxSpeedSM /3 * thrust +  2 *maxSpeedSM /3; 
 	 	bigParticle.startLifetime = thrust * maxLifeLG  ; 
 	 	//bigParticle.startSpeed = maxSpeedLG /3 * thrust + 2 *maxSpeedLG /3; 
  	}
  	else{
+ 	thrustSound.volume = Mathf.Lerp(thrustSound.volume, 0, Time.deltaTime * 10); 
  		smallParticle.startLifetime = 0; 
 	 	//smallParticle.startSpeed =0; 
 	 	bigParticle.startLifetime = 0; 
 	 	//bigParticle.startSpeed = 0; 
+ 	}
+ 	if(hasFuel ){
+ 		
+ 	}
+ 	else{
+ 		
  	}
  }
 
@@ -77,6 +86,7 @@
  
  function Start () {
  t = this; 
+ thrustSound = GetComponent(AudioSource); 
  	rigid = GetComponent(Rigidbody); 
      planets = GameObject.FindGameObjectsWithTag("Planet");
      maxSpeedSM = smallParticle.startSpeed;
