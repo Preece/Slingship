@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
-var gravity : float = 20.0;
-var orbitSpeed : float = 10.0;
+var gravity : float;
+var orbitSpeed : float;
 
 var sun : GameObject;
 
