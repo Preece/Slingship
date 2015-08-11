@@ -7,6 +7,7 @@
  var maxFuel : float = 100;
  var currentFuel : float = -1; 
  var fuelUsage: float = 2; 
+ var thrustRate: float = 0.3f;
  
  var bigParticle : ParticleSystem ;
  var smallParticle : ParticleSystem ; 
@@ -41,9 +42,9 @@
  	
  	if(Input.GetKey("space") && hasFuel) {
 	 	if (Input.GetKey ("up")) {
-	 		thrust += 0.8 * Time.deltaTime;
+	 		thrust += thrustRate * Time.deltaTime;
 	 	} else if (Input.GetKey ("down")) {
-			thrust += 0.8 * Time.deltaTime;
+			thrust += thrustRate * Time.deltaTime;
 			rigid.drag = 2 * thrust;
 		}
 	}
