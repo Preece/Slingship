@@ -406,6 +406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 1
+  maxFuel: 100
+  currentFuel: -1
+  fuelUsage: 2
   bigParticle: {fileID: 19838954}
   smallParticle: {fileID: 19805936}
   anim: {fileID: 9551556}
