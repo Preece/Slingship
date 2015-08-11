@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+
 var targets : Array;
 var boundingBoxPadding : float = 2.0;
 var minimumOrthographicSize : float = 8.0;

@@ -2,7 +2,8 @@
  
  private var planets : GameObject[];
  
- var thrust : float = 0;
+ private var thrust : float = 0;
+ var thrustPower : float = 1; 
  var maxFuel : float = 100;
  var currentFuel : float = -1; 
  var fuelUsage: float = 2; 
@@ -112,7 +113,7 @@
              transform.rotation = Quaternion.LookRotation(rigid.velocity);
              
              var thrustVec = transform.forward.normalized;
-             thrustVec *= thrust * 2;
+             thrustVec *= thrust * thrustPower;
              
              if(Input.GetKey("space")) {
              	if(Input.GetKey ("up")) {
