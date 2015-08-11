@@ -3,22 +3,29 @@
 var targets : Array;
 var boundingBoxPadding : float = 2.0;
 var minimumOrthographicSize : float = 8.0;
-var zoomSpeed : float = 20.0;
+var zoomSpeed : float = 1;
 
 var gameCamera : Camera;
 
+var ship : GameObject;
+var planets : GameObject[];
+
 function Awake() {
-	//gameCamera = GetComponent(Camera);
+
 }
 
 function Start () {
 	targets = new Array();
-	targets.AddRange(GameObject.FindGameObjectsWithTag("Planet"));
-	targets.Add(GameObject.FindGameObjectWithTag("Ship"));
+	
+	planets = GameObject.FindGameObjectsWithTag("Planet");
+	targets.AddRange(planets);
+	
+	ship = GameObject.FindGameObjectWithTag("Ship");
+	targets.Add(ship);
 }
 
 function Update () {
-
+	
 }
 
 function LateUpdate() {
