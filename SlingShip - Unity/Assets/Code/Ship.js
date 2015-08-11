@@ -34,6 +34,20 @@
              
              transform.rotation = Quaternion.LookRotation(gameObject.GetComponent(Rigidbody).velocity);
              
+             var thrustVec = transform.forward.normalized;
+             thrustVec *= thrust * 2;
+             
+             Debug.Log(thrustVec);
+             
+             gameObject.GetComponent(Rigidbody).drag = 0;
+             
+             if(Input.GetKey("space")) {
+             	if(thrust > 0) {
+             		gameObject.GetComponent(Rigidbody).AddForce(thrustVec);
+             	} else if(thrust < 0) {
+             		gameObject.GetComponent(Rigidbody).drag = 1;
+             	}
+             }
              
          }
      }
@@ -42,11 +56,11 @@
  function Update() {
  
  	if (Input.GetKey ("up")) {
- 		thrust += 1 * Time.deltaTime;
- 	}
-			
-	if (Input.GetKey ("down")) {
-		thrust -= 1 * Time.deltaTime;
+ 		thrust = 1;
+ 	} else if (Input.GetKey ("down")) {
+		thrust = -1;
+	} else {
+		thrust = 0;
 	}
 	
 	if(thrust < -1) thrust = -1;

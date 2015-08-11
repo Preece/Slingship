@@ -182,7 +182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11474098, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: gravity
-      value: 5
+      value: 3.92000008
       objectReference: {fileID: 0}
     - target: {fileID: 13577860, guid: 9331bdc5470a3c0489ee36af201190ce, type: 2}
       propertyPath: m_Enabled
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4173dd8b945199848ba701d79f3537f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  thrust: 0
 --- !u!4 &1101975355
 Transform:
   m_ObjectHideFlags: 0
@@ -400,6 +400,10 @@ Prefab:
     - target: {fileID: 5489652, guid: d3540ae7fd6f9ec4bba0c0feb0166fa7, type: 2}
       propertyPath: m_Constraints
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476068, guid: d3540ae7fd6f9ec4bba0c0feb0166fa7, type: 2}
+      propertyPath: thrust
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3540ae7fd6f9ec4bba0c0feb0166fa7, type: 2}
