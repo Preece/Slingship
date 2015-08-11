@@ -4,8 +4,38 @@
  
  var thrust : float = 0;
  
+ var bigParticle : ParticleSystem ;
+ var smallParticle : ParticleSystem ; 
+ var anim : Animator; 
+ 
+ private var maxSpeedSM : float;
+ private var maxLifeLG : float;
+ private var maxSpeedLG : float;
+ private var maxLifeSM: float; 
+ 
+ function updateThrust(){
+ Debug.Log(thrust); 
+ anim.speed =  thrust; 
+	 if(thrust > 0){
+	 	smallParticle.startLifetime = thrust * maxLifeSM ; 
+	 	//smallParticle.startSpeed = maxSpeedSM /3 * thrust +  2 *maxSpeedSM /3; 
+	 	bigParticle.startLifetime = thrust * maxLifeLG  ; 
+	 	//bigParticle.startSpeed = maxSpeedLG /3 * thrust + 2 *maxSpeedLG /3; 
+ 	}
+ 	else{
+ 		smallParticle.startLifetime = 0; 
+	 	//smallParticle.startSpeed =0; 
+	 	bigParticle.startLifetime = 0; 
+	 	//bigParticle.startSpeed = 0; 
+ 	}
+ }
+ 
  function Start () {
      planets = GameObject.FindGameObjectsWithTag("Planet");
+     maxSpeedSM = smallParticle.startSpeed;
+     maxLifeSM = smallParticle.startLifetime; 
+     maxSpeedLG = bigParticle.startSpeed; 
+     maxLifeLG = bigParticle.startLifetime; 
  }
  
  function FixedUpdate () {
@@ -69,5 +99,5 @@
 	
 	if(thrust < 0) thrust = 0;
 	if(thrust > 1) thrust = 1;
-	
+	updateThrust(); 
  }
