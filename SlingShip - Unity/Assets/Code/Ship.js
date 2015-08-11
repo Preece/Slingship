@@ -46,7 +46,7 @@
          
          if(dist < 1) dist = 1;
          
-         var maxDist = planet.GetComponent(Planet).gravity * 4;
+         var maxDist = planet.GetComponent(Planet).gravity * 50;
          
          if (dist <= maxDist) {
          
@@ -65,7 +65,6 @@
              
              var thrustVec = transform.forward.normalized;
              thrustVec *= thrust * 2;
-             
              
              if(Input.GetKey("space")) {
              	if(Input.GetKey ("up")) {

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 441500}
   - 114: {fileID: 11400040}
-  - 82: {fileID: 8255928}
+  - 82: {fileID: 8272384}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: MainCamera
@@ -29,7 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8255928
+--- !u!82 &8272384
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,7 +112,10 @@ MonoBehaviour:
   boundingBoxPadding: 2
   minimumOrthographicSize: 8
   zoomSpeed: 20
+  panSpeed: 1
   gameCamera: {fileID: 0}
+  ship: {fileID: 0}
+  planets: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

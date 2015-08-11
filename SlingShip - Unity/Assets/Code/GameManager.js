@@ -3,21 +3,67 @@
 var targets : Array;
 var boundingBoxPadding : float = 2.0;
 var minimumOrthographicSize : float = 8.0;
-var zoomSpeed : float = 20.0;
+var zoomSpeed : float = 0.1;
+var panSpeed : float = 1;
 
 var gameCamera : Camera;
 
+var ship : GameObject;
+var planets : GameObject[];
+
 function Awake() {
-	//gameCamera = GetComponent(Camera);
+	zoomSpeed = 1;
+	panSpeed = 1;
 }
 
 function Start () {
 	targets = new Array();
-	targets.AddRange(GameObject.FindGameObjectsWithTag("Planet"));
-	targets.Add(GameObject.FindGameObjectWithTag("Ship"));
+	
+	planets = GameObject.FindGameObjectsWithTag("Planet");
+	targets.AddRange(planets);
+	
+	ship = GameObject.FindGameObjectWithTag("Ship");
+	targets.Add(ship);
 }
 
 function Update () {
+
+	targets.Clear();
+	
+	var lowestDist = Mathf.Infinity;
+	var closestPlanet1 : GameObject;
+	var closestPlanet2 : GameObject;
+	var dist = 0;
+	
+	for(var plane : GameObject in planets) {
+		dist = Vector3.Distance(plane.transform.position, ship.transform.position);
+		
+		if(dist < lowestDist) {
+			closestPlanet1 = plane;
+			lowestDist = dist;
+		}
+	}
+	
+	targets.Add(closestPlanet1);
+	
+	lowestDist = Mathf.Infinity;
+	
+	for(var plane : GameObject in planets) {
+		dist = Vector3.Distance(plane.transform.position, ship.transform.position);
+		
+		if(dist < lowestDist && plane.GetInstanceID() != closestPlanet1.GetInstanceID()) {
+			closestPlanet2 = plane;
+			lowestDist = dist;
+		}
+	}
+	
+	
+	
+	targets.Add(closestPlanet2);
+	
+	targets.Add(ship);
+	
+	Debug.Log(targets.length);
 
 }
 
@@ -46,7 +92,7 @@ function CalculateTargetsBoundingBox() {
 }
 
 function CalculateCameraPosition(boundingBox : Rect) {
-    var boundingBoxCenter = boundingBox.center;
+    var boundingBoxCenter = Vector2.Lerp(new Vector2(gameCamera.transform.position.x, gameCamera.transform.position.y), boundingBox.center, panSpeed * Time.deltaTime);
 
     return new Vector3(boundingBoxCenter.x, boundingBoxCenter.y, gameCamera.transform.position.z);
 }
