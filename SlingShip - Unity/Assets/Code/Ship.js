@@ -21,6 +21,7 @@
  private var hasFuel: boolean = true; 
  private var rigid : Rigidbody; 
  private var thrustSound : AudioSource;
+ private var hMove : float; 
  
  function updateThrust(){
  anim.speed =  thrust; 
@@ -65,12 +66,18 @@
 		thrust = 0;
 	}
 	
-	if(!Input.GetKey("up") && !Input.GetKey("down") && !Input.GetKey("space")) {
-		thrust = 0;
-	}
+	
 	
 	if(thrust < 0) thrust = 0;
 	if(thrust > 1) thrust = 1;
+	
+	hMove = Input.GetAxisRaw("Horizontal"); 
+	if(hMove != 0 && Input.GetKey("space")){
+		thrust += thrustRate * Time.deltaTime; 
+	}
+	if(!Input.GetKey("up") && !Input.GetKey("down") && !Input.GetKey("space") && hMove == 0) {
+		thrust = 0;
+	}
  }
  
   function useFuel(){
@@ -117,8 +124,7 @@
              
              force.z = 0;
              
-             rigid.AddForce(force);
-             
+             rigid.AddForce(force);             
              
              rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 10);
              
@@ -128,6 +134,7 @@
              thrustVec *= thrust * thrustPower;
              
              if(Input.GetKey("space")) {
+             rigid.AddForce(hMove * thrustPower * transform.up); 
              	if(Input.GetKey ("up")) {
              		rigid.AddForce(thrustVec);
              	} 
