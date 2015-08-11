@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 var gravity : float = 20.0;
-var rotationSpeed : float = 10.0;
+var orbitSpeed : float = 10.0;
 
 var sun : GameObject;
 
@@ -14,5 +14,5 @@ function Update () {
 }
 
 function FixedUpdate() {
-	transform.RotateAround (sun.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+	transform.RotateAround (sun.transform.position, Vector3.forward, orbitSpeed * Time.deltaTime);
 }

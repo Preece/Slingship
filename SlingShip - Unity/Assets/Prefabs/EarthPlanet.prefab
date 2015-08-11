@@ -26,9 +26,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444180}
+  - 114: {fileID: 11409320}
   m_Layer: 0
   m_Name: EarthPlanet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.5869246, y: 2.6049993, z: 0}
+  m_LocalPosition: {x: 15.4100285, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 478596}
@@ -89,6 +90,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158752}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11409320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6806e827053e1554692040c77b0e0134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 20
+  rotationSpeed: 10
+  sun: {fileID: 0}
 --- !u!135 &13577860
 SphereCollider:
   m_ObjectHideFlags: 1
