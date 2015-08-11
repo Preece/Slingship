@@ -69,6 +69,7 @@
  			currentFuel = 0; 
  			hasFuel = false; 
  		}
+ 		UIManager.updateFuel(currentFuel / maxFuel); 
  	}
  }
  
@@ -82,6 +83,7 @@
      if(currentFuel == -1){
      	currentFuel = maxFuel;
      }
+     UIManager.updateFuel(currentFuel / maxFuel);
  }
  
  function FixedUpdate () {

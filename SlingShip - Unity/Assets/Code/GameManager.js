@@ -63,7 +63,6 @@ function Update () {
 	
 	targets.Add(ship);
 	
-	Debug.Log(targets.length);
 
 }
 
