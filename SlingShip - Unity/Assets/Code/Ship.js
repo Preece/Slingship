@@ -28,7 +28,9 @@
              
              gameObject.GetComponent(Rigidbody).AddForce(force);
              
-             //gameObject.GetComponent(Rigidbody).velocity = Vector3.ClampMagnitude(gameObject.GetComponent(Rigidbody).velocity, 20);
+             Debug.Log(gameObject.GetComponent(Rigidbody).velocity.magnitude);
+             
+             gameObject.GetComponent(Rigidbody).velocity = Vector3.ClampMagnitude(gameObject.GetComponent(Rigidbody).velocity, 10);
              
              transform.rotation = Quaternion.LookRotation(gameObject.GetComponent(Rigidbody).velocity);
              
