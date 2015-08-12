@@ -141,7 +141,7 @@ function ModifyRetroThrusters(){
  function TakeFuel(planetGO : GameObject){
  	var planetComp = planetGO.GetComponent(Planet); 
  	var dist : float = Vector3.Distance(planetGO.transform.position ,transform.position); 
- 	if(planetComp.hasFuel && dist < 4 + planetGO.GetComponent(Planet).radius / 10){
+ 	if(planetComp.hasFuel && dist < 4 + planetGO.transform.localScale.x){
  		currentFuel += fuelGain * Time.fixedDeltaTime; 
  		currentFuel = Mathf.Min(maxFuel, currentFuel); 
  		hasFuel = true; 
