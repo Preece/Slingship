@@ -18,7 +18,6 @@ function OnCollisionEnter(collision: Collision) {
 	
 	for (var contact : ContactPoint in collision.contacts) {
 		print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
-		Debug.Log(contact.point);
 		
 		var vecLine = transform.position - contact.point;
 		
