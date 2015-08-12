@@ -110,19 +110,36 @@
  			index = i; 
  		} 
  	}
- 	return planets[i]; 
+ 	return planets[index]; 
+ }
+ function AddPlanetSpeed(thePlanet : Planet, dist : float ){
+ 	if(dist < 16){
+ 		transform.position += thePlanet.GetChange(); 
+ 	}
  }
  function GetPulled(){
  	var closetPlanet : GameObject = ClosestPlanet(); 
  	var toPlanet : Vector3 = closetPlanet.transform.position - transform.position; 
  	var mag = toPlanet.sqrMagnitude; 
  	var dir = toPlanet.normalized; 
- 	 
- 	
+ 	rigid.AddForce(5 * dir * closetPlanet.GetComponent(Planet).gravity / mag, ForceMode.Acceleration); 
+ 	Debug.Log(closetPlanet); 
+ 	//AddPlanetSpeed(closetPlanet.GetComponent(Planet), mag); 
  }
  
  function FixedUpdate () {
- Debug.Log(thrust); 
+ 
+	 GetPulled(); 
+	 transform.rotation = Quaternion.LookRotation(rigid.velocity);
+	 var thrustVec = transform.forward;
+     thrustVec *= thrust * thrustPower;
+	 if(Input.GetKey("space")) {
+	 	if(Input.GetKey ("up")) {
+	    	rigid.AddForce(thrustVec);
+	    } 
+	 }
+	 rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 30);
+ /*
  
      for(var planet : GameObject in planets) {
      
@@ -162,7 +179,7 @@
              }
              
          }
-     }
+     }*/
  }
  
  function Update() {
