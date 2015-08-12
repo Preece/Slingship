@@ -15,7 +15,7 @@ var planets : GameObject[];
 
 function Awake() {
 	zoomSpeed = 1;
-	panSpeed = 1;
+	panSpeed = 5;
 }
 
 function Start () {
@@ -89,7 +89,11 @@ function CalculateTargetsBoundingBox() {
 }
 
 function CalculateCameraPosition(boundingBox : Rect) {
-    var boundingBoxCenter = Vector2.Lerp(new Vector2(gameCamera.transform.position.x, gameCamera.transform.position.y), new Vector2(ship.transform.position.x, ship.transform.position.y), panSpeed * Time.deltaTime);
+
+	var camPoint = new Vector2(ship.transform.position.x, ship.transform.position.y);
+	//camPoint += (new Vector2(ship.GetComponent(Rigidbody).velocity.x, ship.GetComponent(Rigidbody).velocity.y)).normalized * 3;
+	
+    var boundingBoxCenter = Vector2.Lerp(new Vector2(gameCamera.transform.position.x, gameCamera.transform.position.y), camPoint, panSpeed * Time.deltaTime);
 
     return new Vector3(boundingBoxCenter.x, boundingBoxCenter.y, gameCamera.transform.position.z);
 }
