@@ -113,8 +113,9 @@
  	return planets[index]; 
  }
  function AddPlanetSpeed(thePlanet : Planet, dist : float ){
- 	if(dist < 16){
+ 	if(dist < 100){
  		transform.position += thePlanet.GetChange(); 
+ 		//rigid.AddForce(thePlanet.GetChange()); 
  	}
  }
  function GetPulled(){
@@ -124,7 +125,7 @@
  	var dir = toPlanet.normalized; 
  	rigid.AddForce(5 * dir * closetPlanet.GetComponent(Planet).gravity / mag, ForceMode.Acceleration); 
  	Debug.Log(closetPlanet); 
- 	//AddPlanetSpeed(closetPlanet.GetComponent(Planet), mag); 
+ 	AddPlanetSpeed(closetPlanet.GetComponent(Planet), mag); 
  }
  
  function FixedUpdate () {
@@ -138,7 +139,8 @@
 	    	rigid.AddForce(thrustVec);
 	    } 
 	 }
-	 rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 30);
+	 rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 15);
+	 transform.position = new Vector3(transform.position.x, transform.position.y,0); 
  /*
  
      for(var planet : GameObject in planets) {
