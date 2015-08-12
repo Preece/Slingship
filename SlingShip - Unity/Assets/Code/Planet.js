@@ -8,11 +8,12 @@ var sun : GameObject;
 var ship : GameObject;
 
 private var previousPosition : Vector3;
+private var deltaPos : Vector3; 
 
 function FixedUpdate() {
 	transform.RotateAround (sun.transform.position, Vector3.forward, orbitSpeed * Time.deltaTime);
-	
-	var prevPosition = sun.transform.position;
+	deltaPos = transform.position - previousPosition;
+	previousPosition = transform.position; 
 	
 	transform.RotateAround(sun.transform.position, Vector3.forward, orbitSpeed * Time.deltaTime);
 	
@@ -21,6 +22,9 @@ function FixedUpdate() {
 	} else {
 		adjustedGrav = gravity;
 	}
+}
+function GetChange(){
+	return  deltaPos; 
 }
 
  var theta_scale : float = 0.01f;        //Set lower to add more points
@@ -31,6 +35,7 @@ function FixedUpdate() {
  function Awake () {      
   	sun = GameObject.FindGameObjectWithTag("Sun");
 	ship = GameObject.FindGameObjectWithTag("Ship"); 
+	previousPosition = transform.position; 
 	radius = Vector3.Distance(transform.position, sun.transform.position); 
     var sizeValue : float = (2.0f * Mathf.PI) / theta_scale; 
     size = Mathf.Floor(sizeValue);
