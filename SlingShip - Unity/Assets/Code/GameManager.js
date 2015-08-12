@@ -12,6 +12,7 @@ var gameCamera : Camera;
 
 var ship : GameObject;
 var planets : GameObject[];
+var asteroids : GameObject[]; 
 
 function Awake() {
 	zoomSpeed = 1;
@@ -26,6 +27,7 @@ function Start () {
 	
 	ship = GameObject.FindGameObjectWithTag("Ship");
 	targets.Add(ship);
+	
 }
 
 function Update () {
@@ -104,6 +106,12 @@ function CalculateCameraPosition(boundingBox : Rect) {
     var boundingBoxCenter = Vector2.Lerp(new Vector2(gameCamera.transform.position.x, gameCamera.transform.position.y), camPoint, panSpeed * Time.deltaTime);
 
     return new Vector3(boundingBoxCenter.x, boundingBoxCenter.y, gameCamera.transform.position.z);
+}
+function AsteroidMesh(par : GameObject){
+	var i = Mathf.Floor(Random.Range(0,asteroids.Length));
+	var astMesh = Instantiate(asteroids[i]);
+	astMesh.transform.parent = par.transform; 
+	astMesh.transform.localPosition = Vector3.zero; 
 }
 
 function CalculateOrthographicSize(boundingBox : Rect) {
