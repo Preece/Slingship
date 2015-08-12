@@ -21,7 +21,9 @@
  private var hasFuel: boolean = true; 
  private var rigid : Rigidbody; 
  private var thrustSound : AudioSource;
- private var hMove : float; 
+ private var vMove : float; 
+ 
+ private var velocity : Vector3 = Vector3.zero; 
  
  function updateThrust(){
  	anim.speed =  thrust; 
@@ -49,34 +51,29 @@
 
  
  function getInput(){
- 	rigid.drag = 0;
+ 	vMove = Input.GetAxisRaw("Vertical"); 
  	
- 	if(Input.GetKey("space") && hasFuel) {
-	 	if (Input.GetKey ("up")) {
-	 		thrust += thrustRate * Time.deltaTime;
-	 	} else if (Input.GetKey ("down")) {
-			thrust += thrustRate * Time.deltaTime;
-			rigid.drag = 2 * thrust;
-		}
-	}
-	if(Input.GetKey("space") && !hasFuel){
-		thrust = 0; 
-	}
-	if(Input.GetKeyUp("space")) {
-		thrust = 0;
-	}
+ 	if(vMove > 0){
+ 		thrust += thrustRate * Time.deltaTime; 
+ 	}
+ 	if(vMove < 0){
+ 		thrust -= thrustRate * Time.deltaTime; 
+ 	}
+ 	if(vMove == 0){
+ 		thrust = Mathf.Lerp(thrust, 0, Time.deltaTime * 4); 
+ 	}
 
-	
-	if(!Input.GetKey("up") && !Input.GetKey("down") && !Input.GetKey("space")) {
-		thrust = 0;
-	}
-	if(thrust < 0) thrust = 0;
+	if(thrust < -1) thrust = -1;
 	if(thrust > 1) thrust = 1;
+ }
+ function modifyVelocity(val : Vector3 ){
+ 	velocity += val * Time.fixedDeltaTime * .1f;
+ 	//if(velocity.sqrMagnitude > 16) 
  }
  
   function useFuel(){
- 	if(thrust > 0){
- 		currentFuel -= fuelUsage * Time.deltaTime; 
+ 	if(thrust != 0){
+ 		currentFuel -= fuelUsage * Time.deltaTime * Mathf.Abs(thrust); 
  		if(currentFuel <= 0){
  			currentFuel = 0; 
  			hasFuel = false; 
@@ -88,7 +85,7 @@
  function Start () {
  t = this; 
  thrustSound = GetComponent(AudioSource); 
- 	rigid = GetComponent(Rigidbody); 
+ 	//rigid = GetComponent(Rigidbody); 
      planets = GameObject.FindGameObjectsWithTag("Planet");
      maxSpeedSM = smallParticle.startSpeed;
      maxLifeSM = smallParticle.startLifetime; 
@@ -120,26 +117,27 @@
  }
  function GetPulled(){
  	var closetPlanet : GameObject = ClosestPlanet(); 
- 	var toPlanet : Vector3 = closetPlanet.transform.position - transform.position; 
- 	var mag = toPlanet.sqrMagnitude; 
- 	var dir = toPlanet.normalized; 
- 	rigid.AddForce(5 * dir * closetPlanet.GetComponent(Planet).gravity / mag, ForceMode.Acceleration); 
- 	Debug.Log(closetPlanet); 
- 	AddPlanetSpeed(closetPlanet.GetComponent(Planet), mag); 
+ 	var vec : Vector3 = closetPlanet.transform.position - transform.position; 
+ 	var dir = vec.normalized; 
+ 	//vec -= dir * closetPlanet.GetComponent(Planet).radius / 10; 
+ 	var magSqr = vec.sqrMagnitude; 
+ 	if(magSqr <1){
+ 		magSqr = 1; 
+ 	}
+ 	var gravMod : Vector3 = closetPlanet.GetComponent(Planet).gravity * dir / magSqr * 30; 
+ 	Debug.Log(closetPlanet.name + " | " + gravMod.magnitude + " | " + gravMod); 
+ 	modifyVelocity(gravMod); 
  }
+ 
  
  function FixedUpdate () {
  
+	 //GetPulled(); 
+	 transform.rotation = Quaternion.LookRotation(velocity);
+	 modifyVelocity(thrust * thrustPower * transform.forward);
 	 GetPulled(); 
-	 transform.rotation = Quaternion.LookRotation(rigid.velocity);
-	 var thrustVec = transform.forward;
-     thrustVec *= thrust * thrustPower;
-	 if(Input.GetKey("space")) {
-	 	if(Input.GetKey ("up")) {
-	    	rigid.AddForce(thrustVec);
-	    } 
-	 }
-	 rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 15);
+	 transform.position += velocity * Time.fixedDeltaTime; 
+	 
 	 transform.position = new Vector3(transform.position.x, transform.position.y,0); 
  /*
  
