@@ -164,7 +164,11 @@ function ModifyRetroThrusters(){
 	 //GetPulled(); 
 	 //var oldRot = transform.rotation; 
 	 transform.LookAt(transform.position + velocity);
+
 	 //transform.rotation = Quaternion.Lerp(oldRot, transform.rotation, Time.deltaTime); 
+
+	 //transform.rotation = Quaternion.Lerp(oldRot, transform.rotation, Time.deltaTime * 3); 
+
 	 modifyVelocity(thrust * thrustPower * transform.forward);
 	 GetPulled(); 
 	 velocity = RemoveZ(velocity); 
