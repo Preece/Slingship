@@ -33,35 +33,19 @@ function Update () {
 	targets.Clear();
 	
 	var lowestDist = Mathf.Infinity;
-	var closestPlanet1 : GameObject;
-	var closestPlanet2 : GameObject;
+	var closestPlanet : GameObject;
 	var dist = 0;
 	
 	for(var plane : GameObject in planets) {
 		dist = Vector3.Distance(plane.transform.position, ship.transform.position);
 		
 		if(dist < lowestDist) {
-			closestPlanet1 = plane;
+			closestPlanet = plane;
 			lowestDist = dist;
 		}
 	}
 	
-	targets.Add(closestPlanet1);
-	
-	lowestDist = Mathf.Infinity;
-	
-	for(var plane : GameObject in planets) {
-		dist = Vector3.Distance(plane.transform.position, ship.transform.position);
-		
-		if(dist < lowestDist && plane.GetInstanceID() != closestPlanet1.GetInstanceID()) {
-			closestPlanet2 = plane;
-			lowestDist = dist;
-		}
-	}
-	
-	
-	
-	targets.Add(closestPlanet2);
+	targets.Add(closestPlanet);
 	
 	targets.Add(ship);
 	

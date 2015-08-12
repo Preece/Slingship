@@ -134,15 +134,17 @@
          
          if (dist <= maxDist) {
          
-             var v = planet.transform.position - transform.position;
+             var v = planet.transform.position - transform.position - ((planet.transform.position - transform.position).normalized * planet.transform.localScale.x);
              
-             var force = 10 * ((v.normalized * planet.GetComponent(Planet).gravity) / (dist * dist));
+             var force = 10 * ((v.normalized * planet.GetComponent(Planet).adjustedGrav) / (dist * dist));
+             
              
              force.z = 0;
              
-             rigid.AddForce(force);             
+             rigid.AddForce(force);
              
-             rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 10);
+             rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 30);
+
              
              transform.rotation = Quaternion.LookRotation(rigid.velocity);
              //transform.LookAt(transform.position + rigid.velocity); 
