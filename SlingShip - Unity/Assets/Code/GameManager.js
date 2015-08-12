@@ -113,6 +113,7 @@ function AsteroidMesh(par : GameObject){
 	var astMesh = Instantiate(asteroids[i]);
 	astMesh.transform.parent = par.transform; 
 	astMesh.transform.localPosition = Vector3.zero; 
+	astMesh.transform.localScale = par.transform.localScale;
 }
 
 function CalculateOrthographicSize(boundingBox : Rect) {
