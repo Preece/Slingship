@@ -52,8 +52,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137846}
-  m_LocalRotation: {x: .0677731037, y: -.703851342, z: .703851461, w: .0677730963}
-  m_LocalPosition: {x: 127.213974, y: 0, z: -2.48020315}
+  m_LocalRotation: {x: .0677731112, y: -.703851402, z: .703851521, w: .0677731037}
+  m_LocalPosition: {x: 160, y: 0, z: -2.5}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 447334}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 12
   adjustedGrav: 0
-  orbitSpeed: 6
+  orbitSpeed: 2
   sun: {fileID: 0}
   ship: {fileID: 0}
   theta_scale: .00999999978

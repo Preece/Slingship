@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 10
   adjustedGrav: 0
-  orbitSpeed: 7
+  orbitSpeed: 4
   sun: {fileID: 0}
   ship: {fileID: 0}
   theta_scale: .00999999978

@@ -17,11 +17,12 @@ var asteroids : GameObject[];
 function Awake() {
 	zoomSpeed = 1;
 	panSpeed = 5;
+	t = this;
 }
 
 function Start () {
 	targets = new Array();
-	t = this; 
+	 
 	planets = GameObject.FindGameObjectsWithTag("Planet");
 	targets.AddRange(planets);
 	
@@ -112,6 +113,7 @@ function AsteroidMesh(par : GameObject){
 	var astMesh = Instantiate(asteroids[i]);
 	astMesh.transform.parent = par.transform; 
 	astMesh.transform.localPosition = Vector3.zero; 
+	astMesh.transform.localScale = par.transform.localScale;
 }
 
 function CalculateOrthographicSize(boundingBox : Rect) {
