@@ -52,6 +52,14 @@ function Update () {
 	if(Input.GetKeyDown(KeyCode.P)){
 		ExplodeAndRestart(); 
 	}
+	if(Input.GetMouseButtonDown(1)){
+		Time.timeScale +=.3f; 
+		Debug.Log(Time.timeScale);
+	}
+	if(Input.GetMouseButtonDown(0)){
+		Time.timeScale -=.3f;
+		Debug.Log(Time.timeScale);
+	}
 
 }
 

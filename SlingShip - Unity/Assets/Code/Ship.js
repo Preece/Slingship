@@ -125,7 +125,7 @@
  		magSqr = 1; 
  	}
  	var gravMod : Vector3 = closetPlanet.GetComponent(Planet).gravity * dir / magSqr * 30; 
- 	Debug.Log(closetPlanet.name + " | " + gravMod.magnitude + " | " + gravMod); 
+ 	//Debug.Log(closetPlanet.name + " | " + gravMod.magnitude + " | " + gravMod); 
  	modifyVelocity(gravMod); 
  }
  
@@ -133,7 +133,7 @@
  function FixedUpdate () {
  
 	 //GetPulled(); 
-	 transform.rotation = Quaternion.LookRotation(velocity);
+	 transform.rotation = Quaternion.Slerp(Quaternion.LookRotation(velocity), transform.rotation, Time.fixedDeltaTime);
 	 modifyVelocity(thrust * thrustPower * transform.forward);
 	 GetPulled(); 
 	 transform.position += velocity * Time.fixedDeltaTime; 
