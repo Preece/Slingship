@@ -1264,6 +1264,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11480788, guid: 61720e0d3b08a884698697f771daaec4, type: 2}
+      propertyPath: fuelGain
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61720e0d3b08a884698697f771daaec4, type: 2}
   m_IsPrefabParent: 0
