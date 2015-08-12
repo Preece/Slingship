@@ -65,6 +65,7 @@ function CollectRetroThrusters(){
 function ModifyRetroThrusters(){
 	if(thrust <= 0){
 		var modThrust : float = thrust * -1;
+		retroSound.volume = modThrust; 
 		var i =0; 
 		for(var perticles : ParticleSystem in retroThrusters){
 			perticles.startLifetime = modThrust / retroThrustMax[i]; 
