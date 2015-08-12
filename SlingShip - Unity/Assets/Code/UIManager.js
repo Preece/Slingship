@@ -2,6 +2,7 @@
 import UnityEngine.UI; 
 
 var fuelBar : Slider;
+var explosionPrefab : Transform;
 static var t : UIManager; 
 
 public static function updateFuel(val){

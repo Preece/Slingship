@@ -7,6 +7,8 @@
  var maxFuel : float = 100;
  var currentFuel : float = -1; 
  var fuelUsage: float = 2; 
+ static var t : Ship;
+ var thrustRate: float = 0.3f;
  
  var bigParticle : ParticleSystem ;
  var smallParticle : ParticleSystem ; 
@@ -18,20 +20,30 @@
  private var maxLifeSM: float; 
  private var hasFuel: boolean = true; 
  private var rigid : Rigidbody; 
+ private var thrustSound : AudioSource;
+ private var hMove : float; 
  
  function updateThrust(){
  anim.speed =  thrust; 
 	 if(thrust > 0){
+	 thrustSound.volume = thrust; 
 	 	smallParticle.startLifetime = thrust * maxLifeSM ; 
 	 	//smallParticle.startSpeed = maxSpeedSM /3 * thrust +  2 *maxSpeedSM /3; 
 	 	bigParticle.startLifetime = thrust * maxLifeLG  ; 
 	 	//bigParticle.startSpeed = maxSpeedLG /3 * thrust + 2 *maxSpeedLG /3; 
  	}
  	else{
+ 	thrustSound.volume = Mathf.Lerp(thrustSound.volume, 0, Time.deltaTime * 10); 
  		smallParticle.startLifetime = 0; 
 	 	//smallParticle.startSpeed =0; 
 	 	bigParticle.startLifetime = 0; 
 	 	//bigParticle.startSpeed = 0; 
+ 	}
+ 	if(hasFuel ){
+ 		
+ 	}
+ 	else{
+ 		
  	}
  }
 
@@ -41,9 +53,9 @@
  	
  	if(Input.GetKey("space") && hasFuel) {
 	 	if (Input.GetKey ("up")) {
-	 		thrust += 0.8 * Time.deltaTime;
+	 		thrust += thrustRate * Time.deltaTime;
 	 	} else if (Input.GetKey ("down")) {
-			thrust += 0.8 * Time.deltaTime;
+			thrust += thrustRate * Time.deltaTime;
 			rigid.drag = 2 * thrust;
 		}
 	}
@@ -54,12 +66,18 @@
 		thrust = 0;
 	}
 	
-	if(!Input.GetKey("up") && !Input.GetKey("down") && !Input.GetKey("space")) {
-		thrust = 0;
-	}
+	
 	
 	if(thrust < 0) thrust = 0;
 	if(thrust > 1) thrust = 1;
+	
+	hMove = Input.GetAxisRaw("Horizontal"); 
+	if(hMove != 0 && Input.GetKey("space")){
+		thrust += thrustRate * Time.deltaTime; 
+	}
+	if(!Input.GetKey("up") && !Input.GetKey("down") && !Input.GetKey("space") && hMove == 0) {
+		thrust = 0;
+	}
  }
  
   function useFuel(){
@@ -74,6 +92,8 @@
  }
  
  function Start () {
+ t = this; 
+ thrustSound = GetComponent(AudioSource); 
  	rigid = GetComponent(Rigidbody); 
      planets = GameObject.FindGameObjectsWithTag("Planet");
      maxSpeedSM = smallParticle.startSpeed;
@@ -108,6 +128,7 @@
              rigid.AddForce(force);
              
              rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 30);
+
              
              transform.rotation = Quaternion.LookRotation(rigid.velocity);
              
@@ -115,6 +136,7 @@
              thrustVec *= thrust * thrustPower;
              
              if(Input.GetKey("space")) {
+             rigid.AddForce(hMove * thrustPower * transform.up); 
              	if(Input.GetKey ("up")) {
              		rigid.AddForce(thrustVec);
              	} 
