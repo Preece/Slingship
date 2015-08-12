@@ -24,17 +24,23 @@ function OnCollisionEnter(collision: Collision) {
 		
 		vecLine.z = 0;
 		
-		ship.GetComponent(Ship).modifyVelocity(vecLine * -200);
+		
 		
 		gameObject.GetComponent(Rigidbody).velocity = vecLine * 3;
 		
-		ship.GetComponent(Ship).currentFuel -= ship.GetComponent(Ship).maxFuel / 4;
+		if(collision.gameObject.GetInstanceID() == ship.GetInstanceID()) {
 		
-		Debug.Log(ship.GetComponent(Ship).currentFuel);
+			ship.GetComponent(Ship).modifyVelocity(vecLine * -200);
+			ship.GetComponent(Ship).currentFuel -= ship.GetComponent(Ship).maxFuel / 4;
 		
-		if(ship.GetComponent(Ship).currentFuel <= 0) {
-			GameManager.t.ExplodeAndRestart();
+			Debug.Log(ship.GetComponent(Ship).currentFuel);
+			
+			if(ship.GetComponent(Ship).currentFuel <= 0) {
+				GameManager.t.ExplodeAndRestart();
+			}
 		}
+		
+		
 	};
 	
 	
