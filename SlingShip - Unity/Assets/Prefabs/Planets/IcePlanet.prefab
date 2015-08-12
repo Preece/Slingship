@@ -101,10 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6806e827053e1554692040c77b0e0134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 20
+  gravity: 10
+  adjustedGrav: 0
   orbitSpeed: 7
   sun: {fileID: 0}
   ship: {fileID: 0}
+  theta_scale: .00999999978
+  size: 0
+  radius: 0
+  lineRenderer: {fileID: 0}
 --- !u!135 &13577860
 SphereCollider:
   m_ObjectHideFlags: 1
