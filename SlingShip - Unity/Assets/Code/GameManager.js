@@ -17,11 +17,12 @@ var asteroids : GameObject[];
 function Awake() {
 	zoomSpeed = 1;
 	panSpeed = 5;
+	t = this;
 }
 
 function Start () {
 	targets = new Array();
-	t = this; 
+	 
 	planets = GameObject.FindGameObjectsWithTag("Planet");
 	targets.AddRange(planets);
 	

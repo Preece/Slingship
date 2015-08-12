@@ -117,6 +117,9 @@ MonoBehaviour:
   gameCamera: {fileID: 0}
   ship: {fileID: 0}
   planets: []
+  asteroids:
+  - {fileID: 100000, guid: 7b6608190b902204a81a94c2df268b97, type: 3}
+  - {fileID: 100000, guid: 338ee9e488d7c9844b24448312dabe12, type: 3}
 --- !u!114 &11442922
 MonoBehaviour:
   m_ObjectHideFlags: 1

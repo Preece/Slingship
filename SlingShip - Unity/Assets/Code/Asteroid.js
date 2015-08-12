@@ -4,6 +4,8 @@ var ship : GameObject;
 
 function Start () {
 	ship = GameObject.FindGameObjectWithTag("Ship");
+	
+	GameManager.t.AsteroidMesh(gameObject);
 }
 
 function Update () {
