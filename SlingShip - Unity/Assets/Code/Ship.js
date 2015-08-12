@@ -7,6 +7,7 @@
  var maxFuel : float = 100;
  var currentFuel : float = -1; 
  var fuelUsage: float = 2; 
+ var fuelGain: float = .5f; 
  static var t : Ship;
  var thrustRate: float = 0.3f;
  
@@ -136,10 +137,15 @@ function ModifyRetroThrusters(){
  	}
  	return planets[index]; 
  }
- function AddPlanetSpeed(thePlanet : Planet, dist : float ){
- 	if(dist < 100){
- 		transform.position += thePlanet.GetChange(); 
- 		//rigid.AddForce(thePlanet.GetChange()); 
+ function TakeFuel(planetGO : GameObject){
+ 	var planetComp = planetGO.GetComponent(Planet); 
+ 	var dist : float = Vector3.Distance(planetGO.transform.position ,transform.position); 
+ 	if(planetComp.hasFuel && dist < 5){
+ 		currentFuel += fuelGain * Time.fixedDeltaTime; 
+ 		currentFuel = Mathf.Min(maxFuel, currentFuel); 
+ 		hasFuel = true; 
+ 		UIManager.updateFuel(currentFuel / maxFuel); 
+ 		Debug.Log("fuelin up " + currentFuel); 
  	}
  }
  function GetPulled(){
@@ -154,6 +160,7 @@ function ModifyRetroThrusters(){
  	var gravMod : Vector3 = closetPlanet.GetComponent(Planet).gravity * dir / magSqr * 30; 
  	//Debug.Log(closetPlanet.name + " | " + gravMod.magnitude + " | " + gravMod); 
  	modifyVelocity(gravMod); 
+ 	TakeFuel(closetPlanet); 
  }
  
  function RemoveZ(vec : Vector3){
