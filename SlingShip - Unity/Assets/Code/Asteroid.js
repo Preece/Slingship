@@ -22,9 +22,19 @@ function OnCollisionEnter(collision: Collision) {
 		
 		var vecLine = transform.position - contact.point;
 		
+		vecLine.z = 0;
+		
 		ship.GetComponent(Ship).modifyVelocity(vecLine * -200);
 		
-		gameObject.GetComponent(Rigidbody).velocity = vecLine * 1;
+		gameObject.GetComponent(Rigidbody).velocity = vecLine * 3;
+		
+		ship.GetComponent(Ship).currentFuel -= ship.GetComponent(Ship).maxFuel / 4;
+		
+		Debug.Log(ship.GetComponent(Ship).currentFuel);
+		
+		if(ship.GetComponent(Ship).currentFuel <= 0) {
+			GameManager.t.ExplodeAndRestart();
+		}
 	};
 	
 	

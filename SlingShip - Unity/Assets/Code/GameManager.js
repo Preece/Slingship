@@ -73,7 +73,8 @@ function LateUpdate() {
 }
 function ExplodeAndRestart(){
 	Instantiate(UIManager.t.explosionPrefab, Ship.t.transform.position, Quaternion.identity);
-	Destroy(Ship.t.gameObject);
+	//Destroy(Ship.t.gameObject);
+	ship.SetActive(false);
 	Invoke("Restart",2); 
 }
 function Restart(){
