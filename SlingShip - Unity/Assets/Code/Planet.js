@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+
+var hasFuel : boolean = false; 
 var gravity : float;
 var adjustedGrav : float;
 var orbitSpeed : float;
