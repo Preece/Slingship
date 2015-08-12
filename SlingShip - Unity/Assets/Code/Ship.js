@@ -22,12 +22,16 @@
  private var rigid : Rigidbody; 
  private var thrustSound : AudioSource;
  private var vMove : float; 
+ var retroParent : GameObject; 
+ var retroThrusters: Component[]; 
+ private var retroThrustMax: float[]; 
+ private var retroSound : AudioSource; 
  
  private var velocity : Vector3 = Vector3.zero; 
  
  function updateThrust(){
  	anim.speed =  thrust; 
-	 if(thrust > 0){
+	 if(thrust >= 0){
 	 thrustSound.volume = thrust; 
 	 	smallParticle.startLifetime = thrust * maxLifeSM; 
 	 	//smallParticle.startSpeed = maxSpeedSM /3 * thrust +  2 *maxSpeedSM /3; 
@@ -41,6 +45,7 @@
 	 	bigParticle.startLifetime = 0; 
 	 	//bigParticle.startSpeed = 0; 
  	}
+ 	ModifyRetroThrusters(); 
  	if(hasFuel ){
  		
  	}
@@ -48,7 +53,27 @@
  		
  	}
  }
-
+function CollectRetroThrusters(){ 
+	retroThrusters = retroParent.GetComponentsInChildren(ParticleSystem); 
+	var i = 0;
+	retroThrustMax = new float[retroThrusters.length]; 
+	for(var perticles : ParticleSystem in retroThrusters) {
+		retroThrustMax[i] = perticles.startLifetime;
+		i++;
+	}
+}
+function ModifyRetroThrusters(){
+	if(thrust <= 0){
+		var modThrust : float = thrust * -1;
+		retroSound.volume = modThrust; 
+		var i =0; 
+		for(var perticles : ParticleSystem in retroThrusters){
+			perticles.startLifetime = modThrust / retroThrustMax[i]; 
+			i++;
+		}
+		
+	}
+}
  
  function getInput(){
  	vMove = Input.GetAxisRaw("Vertical"); 
@@ -91,6 +116,8 @@
      maxLifeSM = smallParticle.startLifetime; 
      maxSpeedLG = bigParticle.startSpeed; 
      maxLifeLG = bigParticle.startLifetime; 
+     CollectRetroThrusters(); 
+     retroSound = retroParent.GetComponent(AudioSource); 
      if(currentFuel == -1){
      	currentFuel = maxFuel;
      }
@@ -129,16 +156,21 @@
  	modifyVelocity(gravMod); 
  }
  
- 
+ function RemoveZ(vec : Vector3){
+ 	return new Vector3(vec.x,vec.y,0); 
+ }
  function FixedUpdate () {
  
 	 //GetPulled(); 
-	 transform.rotation = Quaternion.Slerp(Quaternion.LookRotation(velocity), transform.rotation, Time.fixedDeltaTime);
+	 var oldRot = transform.rotation; 
+	 transform.LookAt(transform.position + velocity);
+	 transform.rotation = Quaternion.Lerp(oldRot, transform.rotation, Time.deltaTime); 
 	 modifyVelocity(thrust * thrustPower * transform.forward);
 	 GetPulled(); 
+	 velocity = RemoveZ(velocity); 
 	 transform.position += velocity * Time.fixedDeltaTime; 
 	 
-	 transform.position = new Vector3(transform.position.x, transform.position.y,0); 
+	 transform.position = RemoveZ(transform.position); 
  /*
  
      for(var planet : GameObject in planets) {

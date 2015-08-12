@@ -618,14 +618,6 @@ Prefab:
       propertyPath: m_Name
       value: Assteroid
       objectReference: {fileID: 0}
-    - target: {fileID: 5490378, guid: 06e37d30cf1abe24c95f0125c3630a16, type: 2}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6543858, guid: 06e37d30cf1abe24c95f0125c3630a16, type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06e37d30cf1abe24c95f0125c3630a16, type: 2}
   m_IsPrefabParent: 0
@@ -638,23 +630,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22440434, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: .639999986
       objectReference: {fileID: 0}
     - target: {fileID: 22440434, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22497668, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: .639999986
       objectReference: {fileID: 0}
     - target: {fileID: 22497668, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: .639999986
       objectReference: {fileID: 0}
     - target: {fileID: 22497668, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22407942, guid: 66f496be18dd102439a3b853e7e6bc8a, type: 2}
       propertyPath: m_LocalPosition.x
@@ -740,6 +732,22 @@ Camera:
   m_PrefabParentObject: {fileID: 2060414, guid: f353f8ab39ca3174698f9a6949f3b841,
     type: 2}
   m_PrefabInternal: {fileID: 1964673612}
+--- !u!1 &1684116764 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 112628, guid: 61720e0d3b08a884698697f771daaec4, type: 2}
+  m_PrefabInternal: {fileID: 654745351}
+--- !u!65 &1684116765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684116764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1807535808
 Prefab:
   m_ObjectHideFlags: 0
