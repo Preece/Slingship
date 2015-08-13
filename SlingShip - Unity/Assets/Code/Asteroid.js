@@ -6,6 +6,12 @@ function Start () {
 	ship = GameObject.FindGameObjectWithTag("Ship");
 	
 	GameManager.t.AsteroidMesh(gameObject);
+	
+	gameObject.GetComponent(Rigidbody).angularVelocity = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
+	
+	var scaleMondo = Random.Range(0.8, 1.6);
+	
+	transform.localScale = new Vector3(scaleMondo, scaleMondo, scaleMondo);
 }
 
 function Update () {
@@ -24,20 +30,26 @@ function OnCollisionEnter(collision: Collision) {
 		
 		vecLine.z = 0;
 		
-		
-		
 		gameObject.GetComponent(Rigidbody).velocity = vecLine * 3;
 		
 		if(collision.gameObject.GetInstanceID() == ship.GetInstanceID()) {
 		
 			ship.GetComponent(Ship).modifyVelocity(vecLine * -200);
-			ship.GetComponent(Ship).currentFuel -= ship.GetComponent(Ship).maxFuel / 4;
-		
-			Debug.Log(ship.GetComponent(Ship).currentFuel);
+			
+			if(ship.GetComponent(Ship).invincible == false) {
+				
+				ship.GetComponent(Ship).currentFuel -= ship.GetComponent(Ship).maxFuel / 4;
+				Debug.Log("Current fuel is now: " + ship.GetComponent(Ship).currentFuel);
+				
+				ship.GetComponent(Ship).invincible = true;
+				ship.GetComponent(Ship).invincibilityCounter = 0;
+			}
 			
 			if(ship.GetComponent(Ship).currentFuel <= 0) {
 				GameManager.t.ExplodeAndRestart();
 			}
+			
+			
 		}
 		
 		
