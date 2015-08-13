@@ -111,9 +111,11 @@ function ModifyRetroThrusters(){
  		UIManager.updateFuel(currentFuel / maxFuel); 
  	}
  }
+ function Awake(){
+ 	t = this; 
+ }
  
  function Start () {
- t = this; 
  thrustSound = GetComponent(AudioSource); 
  	//rigid = GetComponent(Rigidbody); 
      planets = GameObject.FindGameObjectsWithTag("Planet");
