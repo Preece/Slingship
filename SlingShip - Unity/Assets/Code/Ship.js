@@ -15,6 +15,9 @@
  var smallParticle : ParticleSystem ; 
  var anim : Animator; 
  
+ var invincible : boolean = false;
+ var invincibilityCounter : float = 0;
+ 
  private var maxSpeedSM : float;
  private var maxLifeLG : float;
  private var maxSpeedLG : float;
@@ -192,6 +195,14 @@ function ModifyRetroThrusters(){
 	 transform.position += velocity * Time.fixedDeltaTime; 
 	 
 	 transform.position = RemoveZ(transform.position); 
+	 
+	 if(invincible) {
+	 	invincibilityCounter += Time.fixedDeltaTime;
+	 	
+	 	if(invincibilityCounter > 2) {
+	 		invincible = false;
+	 	}
+	 }
  /*
  
      for(var planet : GameObject in planets) {
