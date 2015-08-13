@@ -1,75 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &100964
+--- !u!1 &111878
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 447334}
-  - 33: {fileID: 3371050}
-  - 135: {fileID: 13588904}
-  - 23: {fileID: 2337012}
-  m_Layer: 0
-  m_Name: GeoSphere
+  - 4: {fileID: 487774}
+  - 33: {fileID: 3392076}
+  - 23: {fileID: 2396454}
+  m_Layer: 9
+  m_Name: TractorArt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &137846
+--- !u!1 &178932
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 489882}
-  - 114: {fileID: 11442986}
-  m_Layer: 0
-  m_Name: Jungle Planet
-  m_TagString: Planet
+  - 4: {fileID: 450398}
+  - 114: {fileID: 11496656}
+  m_Layer: 9
+  m_Name: Tractor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &447334
+--- !u!4 &450398
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100964}
+  m_GameObject: {fileID: 178932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .899999976, y: .899999976, z: .899999976}
-  m_Children: []
-  m_Father: {fileID: 489882}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 487774}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &489882
+--- !u!4 &487774
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137846}
-  m_LocalRotation: {x: .0677731037, y: -.703851342, z: .703851461, w: .0677730963}
-  m_LocalPosition: {x: 160, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_Children:
-  - {fileID: 447334}
-  m_Father: {fileID: 0}
+  m_GameObject: {fileID: 111878}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 450398}
   m_RootOrder: 0
---- !u!23 &2337012
+--- !u!23 &2396454
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100964}
+  m_GameObject: {fileID: 111878}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: e8e9780d76870b946a0410b96fe3f994, type: 2}
+  - {fileID: 2100000, guid: 78fe62f44addd884eb1feaf4da082a50, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -83,46 +82,30 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3371050
+--- !u!33 &3392076
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100964}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11442986
+  m_GameObject: {fileID: 111878}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11496656
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137846}
+  m_GameObject: {fileID: 178932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6806e827053e1554692040c77b0e0134, type: 3}
+  m_Script: {fileID: 11500000, guid: 1373dacebf2a94244a23ebd3ba19477b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasFuel: 0
-  gravity: 12
-  adjustedGrav: 0
-  orbitSpeed: 2
-  sun: {fileID: 0}
-  ship: {fileID: 0}
-  theta_scale: .00999999978
-  size: 0
-  radius: 0
-  lineRenderer: {fileID: 0}
---- !u!135 &13588904
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100964}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
+  _planet: {fileID: 0}
+  _ship: {fileID: 0}
+  _rend: {fileID: 0}
+  _offset: 0
+  _radius: 0
+  _speed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -132,5 +115,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 137846}
+  m_RootGameObject: {fileID: 178932}
   m_IsPrefabParent: 1

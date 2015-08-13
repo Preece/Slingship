@@ -9,7 +9,7 @@ var panSpeed : float = 1;
 
 static var t : GameManager; 
 var gameCamera : Camera;
-
+var tractor : GameObject; 
 var ship : GameObject;
 var planets : GameObject[];
 var asteroids : GameObject[]; 

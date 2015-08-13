@@ -115,6 +115,7 @@ MonoBehaviour:
   zoomSpeed: 20
   panSpeed: 1
   gameCamera: {fileID: 0}
+  tractor: {fileID: 178932, guid: 7d95d50b161b6fb4396dd1d23fea1182, type: 2}
   ship: {fileID: 0}
   planets: []
   asteroids:

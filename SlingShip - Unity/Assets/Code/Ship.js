@@ -30,6 +30,7 @@
  var retroThrusters: Component[]; 
  private var retroThrustMax: float[]; 
  private var retroSound : AudioSource; 
+ private var tractor : GameObject; 
  
  private var velocity : Vector3 = Vector3.zero; 
  
@@ -143,12 +144,21 @@ function ModifyRetroThrusters(){
  function TakeFuel(planetGO : GameObject){
  	var planetComp = planetGO.GetComponent(Planet); 
  	var dist : float = Vector3.Distance(planetGO.transform.position ,transform.position); 
- 	if(planetComp.hasFuel && dist < 5){
+ 	if(planetComp.hasFuel && dist < 4 + planetGO.transform.localScale.x){
  		currentFuel += fuelGain * Time.fixedDeltaTime; 
  		currentFuel = Mathf.Min(maxFuel, currentFuel); 
  		hasFuel = true; 
  		UIManager.updateFuel(currentFuel / maxFuel); 
- 		Debug.Log("fuelin up " + currentFuel); 
+ 		if(tractor == null){
+ 		Debug.Log("nullin"); 
+ 			tractor = Instantiate(GameManager.t.tractor); 
+ 			tractor.GetComponent(Tractor).Startup(planetGO.transform, transform, .3f, 2.1f); 
+ 		}
+ 	}
+ 	else{
+ 		if(tractor != null){
+ 			Destroy(tractor); 
+ 		}
  	}
  }
  function GetPulled(){
